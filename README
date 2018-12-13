@@ -1,0 +1,9 @@
+README
+
+Collaboration policy: 
+
+I learned the use of the calc function from a stack overflow post: https://stackoverflow.com/questions/23984629/how-to-set-min-font-size-in-css
+
+For getting the photo carousel to be stable with the text and arrows on top I learned how to center text on an image using a table from this jsfiddle: http://jsfiddle.net/hLdbZ/8/?utm_source=website&utm_medium=embed&utm_campaign=hLdbZ
+
+I learned about transform: translate() to center images from the post: https://stackoverflow.com/questions/42121150/css-centering-with-transform

@@ -1,0 +1,524 @@
+<!doctype html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+body {
+	margin: 0;
+	padding: 0;
+	display: block;
+	font-family: Raleway;
+}
+
+/*
+THe red-rectangle, brown-rectangle, brown-logo, and hamburger make up the top bar of the interface. 
+*/
+.red-rectangle {
+	background-color: #c00404;
+	height: 8px;
+	width: 100%;
+}
+
+.brown-rectangle {
+	background-color: #3a1e1a;
+	height: 35px;
+	width: 100%;
+}
+
+#brown-logo {
+	width: 120px;
+	max-width: 100%;
+	padding-left: 1em;
+	position: absolute; /*The logo does not move as the page resizes*/
+	height: auto; 
+}
+
+#hamburger {
+	width: 32px;
+	max-width: 100%;
+	right: 0;
+	padding-right: 0.85em;
+	padding-top: 0.8em; 
+	position: absolute;
+	display: none; /*set the hamburger to be invisible at first*/
+}
+
+/*
+ The header includes the title Computer Science and the navbar. 
+*/
+
+.header {
+	padding-top: 2.4em;
+	padding-left: 2em;
+}
+
+.computer-science {
+	flex-basis: 35%;
+	padding-bottom: 0.5em;
+	padding-right: 1.2em;
+	color: black;
+	font-size: 44px;
+	text-align: left;
+	font-weight: 800;
+	white-space: nowrap; /*make sure it doesn't wrap over to 2 lines*/
+	text-overflow: hidden; 
+}
+
+.main-menu {
+	flex-basis: 55%; /*main menu should only take up 55% of the width*/
+	display: block;
+	padding-bottom: 1.4em;
+}
+
+.nav-list {
+	display: flex;
+	justify-content: flex-start;
+	margin: 0;
+    padding: 0;
+    padding-top: 5px;
+    list-style: none;
+}
+
+.nav-item {
+	font-size: 24px;
+	font-weight: 670;
+	margin-right: 23px;
+	display: block;
+}
+
+/*
+The carousel includes the image corresponding to the article, the text of the title of the article, the left and right arrow images to scroll through the carousel and the dots to show which page you are on. 
+*/
+.carousel {
+	position: relative;
+    display: table;
+    height: 100%;
+    max-height: 100%;
+
+    /*
+    The carousel image is set to be the background so text and the images of the arrows can be placed on top. 
+    */
+    background: url('jeff.jpg') no-repeat top center; 
+    background-size: 100% auto;
+}
+
+#carousel-title {
+	font-size: calc(4.5px + 3.8vw); /*make sure the words don't get too small*/
+	text-align: center; 
+	color: white;
+	padding: 10%; 
+	padding-bottom: 15%;
+	text-shadow: 1.8px 2.5px rgba(0,0,0,0.5); /*Text shadow makes it more readable*/
+}
+
+#left-arrow {
+	position: absolute; 
+	width: 6vw; /*Make the size proportional to the screen width*/
+	left: 0; 
+	padding-top: 15%;
+}
+
+#right-arrow {
+	position: absolute; 
+	width: 6vw;
+	right: 0; 
+	padding-top: 15%;
+}
+
+#dots {
+	position: absolute; 
+	width: 9vw;
+	left: 50%; 
+	padding-top: 35.6%;
+	transform: translate(-50%); /* center the image of the dots on the carousel image */
+}
+
+.news-events-container {
+	display: flex; 
+	flex-direction: row; /* news and events are on one row to start */
+	border-color: black;
+	padding-top: 2%;
+	padding-bottom: calc(12px + 4.3vw); /*Make sure the line height never gets too low*/
+}
+
+.news-section-heading, .events-section-heading {
+	display:inline-block; /*Inline block so that the border doesn't go accross the entire screen*/
+	font-size: 3.5vw;
+	font-weight: 620;
+	text-align: left;
+	border-bottom: 0.4vw solid #63CAE9;
+}
+
+.news-content, .events-content {
+	display: block;
+	padding-top: 3vw; /*This gives white space between the heading and the content*/
+}
+
+.news-section {
+	width: 57%; /* the news section takes up 57% of the width of the screen */
+	display: block;
+	flex-direction: column; 
+	padding-left: 5.1%;
+}
+
+.news-article-container1, .news-article-container2 {
+	display: flex;
+	flex-direction: row; /*The image and article title should go in one row*/
+	justify-content: space-between; 
+	margin-bottom: 30px; /*space out each article image + title so that its readable*/
+}
+
+.article-image-container1, .article-image-container2 {
+	flex: 0 0 25%;
+	max-width: 25%;
+}
+
+#article-image1, #article-image2 {
+	display: block;
+	height: 100%; 
+	width: 100%; 
+	object-fit: contain;
+}
+
+.article-text1, .article-text2 {
+	flex: 0 0 70%; 
+	max-width: 70%;
+	font-size: calc(3.7px + 1.8vw);
+	font-weight: 550;
+	color: #2B9DBF;
+}
+
+.events-section {
+	width: 31%; 
+	padding-left: 4%;
+	display: block;
+}
+
+.event-container1, .event-container2 {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between; 
+	margin-bottom: 20px;
+}
+
+.date-container1, .date-container2 {
+	flex: 0 0 10%;
+	max-width: 10%;
+	text-align: center;
+	font-weight: 550;
+	font-size: 2vw;
+}
+
+.title-details-container1, .title-details-container2 {
+	flex: 0 0 80%;
+	max-width: 80%;
+	flex-direction: column; /*because the title on detaisl should be aligned vertically*/
+	text-align: left;
+}
+
+.title-container1, .title-container2 {
+	margin-bottom: 11px;
+	font-weight: 550;
+	font-size: calc(3.8px + 1.8vw);
+	color: #2B9DBF;
+}
+
+.details-container1, .details-container2 {
+	font-size: calc(2.65px + 1.6vw);
+	line-height: calc(2.2px + 1.94vw);
+}
+
+.learn-more-container {
+	display: block;
+	padding-top: 2.5%;
+	background-color: #EDEDED; /*This differentiates the learn more section from the rest of hte website*/
+}
+
+.learn-more-heading {
+	text-align: center;
+	font-weight: 550;
+	font-size: calc(4px + 2vw);
+}
+
+.program-list {
+	margin: 0;
+	text-align: center;
+	align-items: center;
+	display: flex;
+	padding: 2.5% 3% 20px 3%; 
+}
+
+.program-item {
+	margin: 0; 
+	display: flex;
+	flex: 1 0 0%; /*Each title takes up 1 proportion of the flex box*/
+	padding-left: 1.5%;
+	padding-right: 1.5%;
+	font-size: calc(1.15px + 1.8vw);
+	align-items: center;
+}
+
+.program-text {
+	margin: 0;
+	flex: 1 0 0%;
+	text-align: center;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	padding: 0.55rem 0.35rem 0.55rem 0.35rem;
+	background-color: white;
+	box-shadow: 1.2px 2px rgba(0, 0, 0, 0.28); /*Make it look like a button with the drop shadow*/
+}
+
+/*
+* Media query sections. This handles the different elements that change as the screen size changes. 
+*/
+
+/*
+When the width becomes wide enough, the title Computer Science and the navbar will go on one row together. 
+*/
+@media(min-width: 1280px) {
+	.header {
+		display: flex;
+		align-items: center;
+	}
+}
+
+/*
+* When the width becomes 700px, remove the nav bar, and add the hamburger. Then make events go under news. For learn more, make the buttons stack vertically. 
+For all text, set a minimum text size, so the text is still readable on a small screen. 
+*/
+@media(max-width: 700px){
+
+	/*
+	Remove the nav bar and add the hamburger which now takes over the functionality if the hamburger. 
+	*/
+	nav {
+		display: none; 
+	}
+
+	#hamburger {
+		display: initial;
+	}
+
+	/*
+	 The news will be placed above events and each will be in their own row. 
+	*/
+	.news-events-container  {
+		flex-direction: column;
+	}
+
+	.news-section {
+		width: 90%;
+		padding-left: 5%
+		padding-right: 5%;
+	}
+
+	.events-section {
+		width: 90%; 
+		padding-right: 5%;
+		padding-left: 5%;
+	}
+
+	/*
+	* Set minimum text sizes for the different information, so that they are still * readable as the screen gets small. 
+	*/
+
+	.news-section-heading, .events-section-heading {
+		font-size: calc(11px + 2.6vw);
+	}
+
+	.article-text1, .article-text2 {
+		font-size: calc(7px + 1.8vw);
+	}
+
+	.date-container1, .date-container2 {
+		flex: 0 0 13%;
+		max-width: 13%;
+		text-align: center; 
+		font-size: calc(8.3px + 1.8vw);
+	}
+
+	.title-container1, .title-container2 {
+		font-size: calc(8.3px + 1.8vw);
+	}
+
+	.details-container1, .details-container2 {
+		font-size: calc(6.6px + 1.7vw);
+		line-height: normal;
+	}
+
+	.news-content, .events-content {
+		display: block;
+		padding-top: 18px;
+	}
+
+	/*
+	* Make the learn more buttons expand to the whole width and stack vertically. 
+	*/
+	.learn-more-heading {
+		font-size: calc(8px + 1.8vw);
+		padding-top: 1%;
+	}
+
+	.program-item{
+		font-size: calc(6.6px + 1.7vw);
+		padding-bottom: 2.8%;
+	}
+
+	.program-list {
+		display: block;
+		padding: 3.5% 3% 2% 3%;
+	}
+}
+
+@media(max-width: 465px){
+	.header {
+		width: 100%;
+	}
+	.computer-science {
+		width: 100%;
+		font-size: 8.8vw;
+		padding-left: 2.5%;
+		padding-right: 1.5%;
+	}
+}
+
+</style>
+
+<head>
+</head>
+
+<body>
+
+<!-- Add a red rectangle and brown rectangle for the top bar, to match the design of the Brown University website. Also, add the hamburger to the corner of the top bar-->
+<div class = "red-rectangle">
+	<img id = brown-logo src="logo.png">
+	<img id = hamburger src = "hamburger.png">
+</div>
+
+<div class = "brown-rectangle">
+</div>
+
+<!-- The header includes the title of Computer science and the navbar which has all the common pages on the CS websites -->
+<div class = "header">
+	<div class = "computer-science">
+		Computer Science
+	</div>
+	<div class = "main-menu">
+		<nav>
+			<ul class = "nav-list">
+				<li class = "nav-item">About</li>
+				<li class = "nav-item">People</li>
+				<li class = "nav-item">Research</li>
+				<li class = "nav-item">Degrees</li>
+				<li class = "nav-item">Courses</li>
+				<li class = "nav-item">Diversity</li>
+			</ul>
+		</nav>
+
+	</div>
+</div>
+
+<!--The photo carousel will have a left and right arrow as well as the dots that show which photo they currently on. Also, text with the title of the photo will be on top of the photo-->
+<div class = "carousel">
+	<img id = left-arrow src = "left.png">
+	<img id = right-arrow src = "right.png">
+	<img id = dots src = "dots.png">
+	<h2 id = "carousel-title"> Brown CS Welcomes A Record Number of Summer Researchers</h2>
+</div>
+
+<!--News and events will go in one container. The container is a flex box, that will set the flex direction to be row when it wants the news and events to be on one row and will set the direction to be column when it wants the news and events to be in separate rows-->
+<div class = "news-events-container">
+	<div class  = "news-section">
+		<div class = "news-section-heading">
+			News
+		</div>
+		<div class = "news-content">
+			<!--Each article container is also a flex box. The flex box resizes the article photo and the article title as the page resizes-->
+			<div class = "news-article-container1">
+				<div class = "article-image-container1">
+					<img id = article-image1 src = "article1.jpg">
+				</div>
+				<div class = "article-text1">
+				Brown Computer Science Seeks Applicants For Future Lecturer Positions 
+				</div>
+			</div>
+			<div class = "news-article-container2">
+				<div class = "article-image-container2">
+					<img id = article-image2 src = "article2.jpg">
+				</div>
+				<div class = "article-text2">
+				Jennifer Rexford Analyzes Successfull Collaboration in Computer Networking Work
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class = "events-section">
+		<div class = "events-section-heading">
+			Events
+		</div>
+		<!--Each event container is also a flex box. The flex box resizes the date, title and description as the page resizes-->
+		<div class = "events-content">
+			<div class = "event-container1">
+				<div class = "date-container1">
+				Oct 12
+				</div>
+				<div class = "title-details-container1">
+					<div class = "title-container1">
+					Google Interview Workshop
+					</div>
+					<div class = "details-container1">
+					Come to the workshop and learn about what it's like to interview at Google!
+					</div>
+				</div>
+			</div>
+			<div class = "event-container2">
+				<div class = "date-container2">
+				Oct 19
+				</div>
+				<div class = "title-details-container2">
+					<div class = "title-container2">
+					Talk: Michael Greenberg
+					</div>
+					<div class = "details-container2">
+					Michael Greenberg is coming to Brown to talk about his work and career. 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<!--The learn more container holds the learn more buttons-->
+<div class = "learn-more-container">
+	<div class = "learn-more-heading">
+	Learn about our programs
+	</div>
+
+	<div class = "programs">
+		<div class = "program-list">
+			<!--The actual text is put in a p within the div so that I can differentiate between the padding between each button and the padding of the button itself. This allows me to set the background of the p and add a drop shadow so that it looks like a button-->
+			<div class = "program-item">
+				<p class = "program-text"> Introductory Courses </p>
+			</div>
+			<div class = "program-item">
+				<p class = "program-text">Undergrad Program </p>
+			</div>
+			<div class = "program-item">
+				<p class = "program-text">Master's Program </p>
+			</div>
+			<div class = "program-item">
+				<p class = "program-text">PhD Program </p>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+</body>
+</html>
+
+
